@@ -27,7 +27,7 @@ type Barang struct {
 	Nama        string
 	Harga       int
 	ID_Toko     uint
-	Toko        []Toko        `gorm:"foreignKey:ID_Toko"`
+	Toko        Toko          `gorm:"foreignKey:ID_Toko"`
 	Pengeluaran []Pengeluaran `gorm:"foreignKey:ID_Barang"`
 }
 

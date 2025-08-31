@@ -19,7 +19,7 @@ func CreatePengeluaran(c *gin.Context) {
 	}
 	config.DB.Preload("Barang").Find(&entry)
 	entry.Harga = entry.Barang.Harga
-
+	entry.ID_Toko = entry.Barang.ID_Toko
 	entry.Total = entry.Jumlah * entry.Harga
 
 	userID := c.MustGet("user_id").(uint)

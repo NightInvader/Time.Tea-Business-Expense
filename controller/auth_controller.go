@@ -42,7 +42,7 @@ func Login(c *gin.Context) {
 	}
 
 	var user structs.User
-	if err := config.DB.Where("username = ?", input.Nama).First(&user).Error; err != nil {
+	if err := config.DB.Where("nama = ?", input.Nama).First(&user).Error; err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid username or password"})
 		return
 	}

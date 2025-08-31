@@ -22,7 +22,7 @@ func CreatePemasukan(c *gin.Context) {
 
 	switch entry.Jenis {
 	case "Teh Tarik", "teh tarik":
-		switch entry.Jenis {
+		switch entry.Ukuran {
 		case "kecil":
 			entry.Profit = (entry.HargaJual - 2000) * entry.Terjual
 		case "besar":
@@ -31,7 +31,7 @@ func CreatePemasukan(c *gin.Context) {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "ukuran tidak sesuai"})
 		}
 	case "Lemon Tea", "lemon tea":
-		switch entry.Jenis {
+		switch entry.Ukuran {
 		case "kecil":
 			entry.Profit = (entry.HargaJual - 2500) * entry.Terjual
 		case "besar":
@@ -55,7 +55,7 @@ func CreatePemasukan(c *gin.Context) {
 
 func GetPemasukan(c *gin.Context) {
 	var entries []structs.Pemasukan
-	config.DB.Find(&entries)
+	config.DB.Preload("Customer").Find(&entries)
 	c.JSON(http.StatusOK, entries)
 }
 
