@@ -23,8 +23,8 @@ func CreatePengeluaran(c *gin.Context) {
 		return
 	}
 
-	entry.Harga = entry.Barang.Harga
-	entry.ID_Toko = entry.Barang.ID_Toko
+	entry.Harga = barang.Harga
+	entry.ID_Toko = barang.ID_Toko
 	entry.Total = entry.Jumlah * entry.Harga
 
 	userID := c.MustGet("user_id").(uint)
