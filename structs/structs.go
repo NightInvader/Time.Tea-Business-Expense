@@ -41,7 +41,6 @@ type Pengeluaran struct {
 	ID_Toko    uint
 	ID_Pendata uint
 	Barang     Barang `gorm:"foreignKey:ID_Barang"`
-	Toko       Toko   `gorm:"foreignKey:ID_Toko"`
 }
 
 type Pemasukan struct {

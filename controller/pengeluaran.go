@@ -26,7 +26,6 @@ func CreatePengeluaran(c *gin.Context) {
 	entry.Harga = entry.Barang.Harga
 	entry.ID_Toko = entry.Barang.ID_Toko
 	entry.Total = entry.Jumlah * entry.Harga
-	entry.Toko = entry.Barang.Toko
 
 	userID := c.MustGet("user_id").(uint)
 	entry.ID_Pendata = userID
