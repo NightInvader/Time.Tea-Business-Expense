@@ -27,15 +27,15 @@ func main() {
 	{
 		auth.POST("/pengeluaran", controller.CreatePengeluaran)
 		auth.GET("/pengeluaran", controller.GetPengeluaran)
-		auth.GET("/pengeluaran:id", controller.GetPengeluaranByID)
-		auth.GET("/pengeluaran/total/:tanggal", controller.GetTotalByTanggal)
+		auth.GET("/pengeluaran/:id", controller.GetPengeluaranByID)
+		auth.GET("/pengeluaran/total", controller.GetTotalByTanggal)
 		auth.PUT("/pengeluaran/:id", controller.UpdatePengeluaran)
 		auth.DELETE("/pengeluaran/:id", controller.DeletePengeluaran)
 
 		auth.POST("/pemasukan", controller.CreatePemasukan)
 		auth.GET("/pemasukan", controller.GetPemasukan)
-		auth.GET("/pemasukan:id", controller.GetPemasukanByID)
-		auth.GET("/pemasukan/total/:tanggal", controller.GetProfitByTanggal)
+		auth.GET("/pemasukan/:id", controller.GetPemasukanByID)
+		auth.GET("/pemasukan/total", controller.GetProfitByTanggal)
 		auth.PUT("/pemasukan/:id", controller.UpdatePemasukan)
 		auth.DELETE("/pemasukan/:id", controller.DeletePemasukan)
 

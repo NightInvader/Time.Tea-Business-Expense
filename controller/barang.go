@@ -39,7 +39,7 @@ func GetBarangByID(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "barang not found"})
 		return
 	}
-
+	config.DB.Preload("Toko").Find(&barang)
 	c.JSON(http.StatusOK, barang)
 }
 

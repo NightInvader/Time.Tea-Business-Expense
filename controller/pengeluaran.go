@@ -17,10 +17,16 @@ func CreatePengeluaran(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	config.DB.Preload("Barang").Find(&entry)
+	var barang structs.Barang
+	if err := config.DB.Preload("Toko").First(&barang, entry.ID_Barang).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Barang not found"})
+		return
+	}
+
 	entry.Harga = entry.Barang.Harga
 	entry.ID_Toko = entry.Barang.ID_Toko
 	entry.Total = entry.Jumlah * entry.Harga
+	entry.Toko = entry.Barang.Toko
 
 	userID := c.MustGet("user_id").(uint)
 	entry.ID_Pendata = userID
