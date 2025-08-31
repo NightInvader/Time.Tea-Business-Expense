@@ -22,7 +22,7 @@ func Register(c *gin.Context) {
 	}
 
 	var existing structs.User
-	if err := config.DB.Where("username = ?", input.Nama).First(&existing).Error; err == nil {
+	if err := config.DB.Where("nama = ?", input.Nama).First(&existing).Error; err == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Username already exists"})
 		return
 	}
